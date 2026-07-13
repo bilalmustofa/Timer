@@ -3,13 +3,17 @@ const hour = document.getElementById('hour');
 const min = document.getElementById('min');
 const sec = document.getElementById('sec');
 
-const targetDate = new Date("Jul 14 2026 08:40:00");
+const targetDate = new Date("Jul 15 2026 08:40:00");
 // console.log(targetDate);
 
 const countDown = (targetDate)  => {
     setInterval(() => updateCountDown(targetDate), 1000)
 }
 countDown(targetDate);
+
+const formatTime = (time) => {
+   return (time < 10) ? `0${time}` : time;
+}
 
 const updateCountDown = (deadline) => {
     const currentDate = new Date();
@@ -24,9 +28,9 @@ const updateCountDown = (deadline) => {
     // console.log(calHour);
 
     // Display the Time
-    sec.textContent = calSec;
-    min.textContent = calMin;
-    hour.textContent = calHour;
-    day.textContent = calDay;
+    sec.textContent = formatTime(calSec);
+    min.textContent = formatTime(calMin);
+    hour.textContent = formatTime(calHour);
+    day.textContent = formatTime(calDay) ;
 }
 
